@@ -1,36 +1,26 @@
-import useTheme, { ColorScheme } from "@/hooks/useTheme";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { createHomeStyles } from "@/assets/styles/home.styles";
+import useTheme from "@/hooks/useTheme";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
   const { toggleDarkMode, colors } = useTheme();
-  const styles = createStyles(colors);
+  const homeStyles = createHomeStyles(colors);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.content}>
-        Edit app/index.tsx to edit this screen.
-      </Text>
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text style={styles.content}>Toggle Theme</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient
+      colors={colors.gradients.background}
+      style={homeStyles.container}>
+      <StatusBar barStyle={colors.statusBarStyle} />
+      <SafeAreaView style={homeStyles.safeArea}>
+        <Text style={homeStyles.todoText}>
+          Edit app/index.tsx to edit this screen.
+        </Text>
+        <TouchableOpacity onPress={toggleDarkMode}>
+          <Text style={homeStyles.todoText}>Toggle Theme</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
-
-const createStyles = (colors: ColorScheme) => {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      gap: 10,
-      backgroundColor: colors.bg,
-    },
-    content: {
-      fontSize: 22,
-      color: colors.text,
-    },
-  });
-
-  return styles;
-};
