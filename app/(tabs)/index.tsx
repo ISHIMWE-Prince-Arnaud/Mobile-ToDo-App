@@ -27,6 +27,8 @@ export default function Index() {
 
   const todos = useQuery(api.todos.getTodos);
   const toggleTodo = useMutation(api.todos.toggleTodo);
+  const deleteTodo = useMutation(api.todos.deleteTodo);
+
   const isLoading = todos === undefined;
 
   const renderTodoItem = ({ item }: { item: Todo }) => {
@@ -71,9 +73,7 @@ export default function Index() {
               {item.text}
             </Text>
             <View style={homeStyles.todoActions}>
-              <TouchableOpacity
-                onPress={() => {}}
-                activeOpacity={0.8}>
+              <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
                 <LinearGradient
                   colors={colors.gradients.warning}
                   style={homeStyles.actionButton}>
@@ -81,7 +81,7 @@ export default function Index() {
                 </LinearGradient>
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => handleDeleteTodo(item._id)}
                 activeOpacity={0.8}>
                 <LinearGradient
                   colors={colors.gradients.danger}
@@ -103,6 +103,31 @@ export default function Index() {
       console.error("Error toggling todo:", error);
       Alert.alert("Error", "Failed to update todo. Please try again.");
     }
+  };
+
+  const handleDeleteTodo = async (id: Id<"todos">) => {
+    Alert.alert(
+      "Confirm Delete",
+      "Are you sure you want to delete this todo?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              await deleteTodo({ id });
+            } catch (error) {
+              console.error("Error deleting todo:", error);
+              Alert.alert("Error", "Failed to delete todo. Please try again.");
+            }
+          },
+        },
+      ]
+    );
   };
 
   if (isLoading) return <LoadingSpinner />;
