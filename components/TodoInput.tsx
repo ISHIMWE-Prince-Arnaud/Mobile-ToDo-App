@@ -30,6 +30,8 @@ const TodoInput = () => {
         <TextInput
           style={homeStyles.input}
           placeholder="What needs to be done?"
+          accessibilityLabel="New todo input"
+          accessibilityHint="Enter the text for your new todo item"
           value={newTodo}
           onChangeText={setNewTodo}
           onSubmitEditing={handleAddTodo}
@@ -39,6 +41,9 @@ const TodoInput = () => {
         <TouchableOpacity
           onPress={handleAddTodo}
           activeOpacity={0.8}
+          accessibilityLabel="Add todo"
+          accessibilityHint="Adds the todo to your list"
+          accessibilityRole="button"
           disabled={!newTodo.trim()}>
           <LinearGradient
             colors={

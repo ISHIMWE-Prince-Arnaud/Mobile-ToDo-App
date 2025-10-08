@@ -32,9 +32,9 @@ const Header = () => {
         </LinearGradient>
 
         <View style={homeStyles.titleTextContainer}>
-          <Text style={homeStyles.title}>Today&apos;s Tasks </Text>
+          <Text style={homeStyles.title}>Today&apos;s Tasks</Text>
           <Text style={homeStyles.subtitle}>
-            {completedTodosCount} of {totalTodosCount}
+            {completedTodosCount} of {totalTodosCount} completed
           </Text>
         </View>
       </View>
