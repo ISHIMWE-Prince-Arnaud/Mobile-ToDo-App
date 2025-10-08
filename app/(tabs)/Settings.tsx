@@ -1,5 +1,5 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles";
-import ProgressStats from "@/components/progressStats";
+import ProgressStats from "@/components/ProgressStats";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";

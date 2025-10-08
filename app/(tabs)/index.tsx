@@ -214,10 +214,6 @@ export default function Index() {
           ListEmptyComponent={<EmptyState />}
           showsVerticalScrollIndicator={false}
         />
-
-        <TouchableOpacity onPress={toggleDarkMode}>
-          <Text style={homeStyles.todoText}>Toggle Theme</Text>
-        </TouchableOpacity>
       </SafeAreaView>
     </LinearGradient>
   );
