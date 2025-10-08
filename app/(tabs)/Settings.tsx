@@ -1,4 +1,5 @@
 import { createSettingsStyles } from "@/assets/styles/settings.styles";
+import Preferences from "@/components/Preferences";
 import ProgressStats from "@/components/ProgressStats";
 import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
@@ -33,6 +34,7 @@ const SettingsScreen = () => {
           contentContainerStyle={settingsStyles.content}
           showsVerticalScrollIndicator={false}>
             <ProgressStats />
+            <Preferences />
           </ScrollView>
       </SafeAreaView>
     </LinearGradient>
